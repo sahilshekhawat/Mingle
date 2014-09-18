@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  from: MyString
+  to: MyString
+  datetime: 2014-09-18 23:05:28
+  user_id: 
+  medium: MyString
+
+two:
+  from: MyString
+  to: MyString
+  datetime: 2014-09-18 23:05:28
+  user_id: 
+  medium: MyString
