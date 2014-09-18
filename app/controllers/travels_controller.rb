@@ -19,13 +19,16 @@ class TravelsController < ApplicationController
 
   # GET /travels/1/edit
   def edit
+    if @travel.user_id != current_user.id
+      redirect_to '/' and return
+    end
   end
 
   # POST /travels
   # POST /travels.json
   def create
     @travel = Travel.new(travel_params)
-
+    @travel.user_id = current_user.id
     respond_to do |format|
       if @travel.save
         format.html { redirect_to @travel, notice: 'Travel was successfully created.' }
@@ -40,6 +43,10 @@ class TravelsController < ApplicationController
   # PATCH/PUT /travels/1
   # PATCH/PUT /travels/1.json
   def update
+    if @travel.user_id != current_user.id
+      redirect_to '/' and return
+    end
+    @travel.user_id = current_user.id
     respond_to do |format|
       if @travel.update(travel_params)
         format.html { redirect_to @travel, notice: 'Travel was successfully updated.' }
@@ -54,6 +61,9 @@ class TravelsController < ApplicationController
   # DELETE /travels/1
   # DELETE /travels/1.json
   def destroy
+    if @travel.user_id != current_user.id
+      redirect_to '/' and return
+    end
     @travel.destroy
     respond_to do |format|
       format.html { redirect_to travels_url, notice: 'Travel was successfully destroyed.' }
