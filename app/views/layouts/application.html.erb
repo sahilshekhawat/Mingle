@@ -8,9 +8,34 @@
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
-<body>
-
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/2.jpg) no-repeat;background-size: 100%;"<%end%>>
+<style>
+a:hover{
+  text-decoration: none !important;
+  color: #fff !important;
+}
+.navbar-nav > li > a
+{
+  color: #eee !important;
+}
+.navbar .navbar-brand
+{
+  color: #eee !important;
+}
+.nav > li > a:hover, .nav > li > a:focus{
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.transblack{
+  background-color: rgba(0, 0, 0, 0.7); 
+}
+.transblack2{
+  background-color: rgba(0, 0, 0, 0.5); 
+  padding: 5%;
+  padding-top: 3%;
+  color: #fff ;
+}
+</style>
+    <div class="navbar transblack navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
