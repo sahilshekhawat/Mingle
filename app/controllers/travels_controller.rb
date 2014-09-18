@@ -1,6 +1,6 @@
 class TravelsController < ApplicationController
   before_action :set_travel, only: [:show, :edit, :update, :destroy]
-
+  skip_before_filter :authenticate_user!, :if => proc {|c| request.path_parameters[:format] == 'json'}
   # GET /travels
   # GET /travels.json
   def index
