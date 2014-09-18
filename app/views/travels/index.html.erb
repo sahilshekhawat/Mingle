@@ -20,59 +20,117 @@
   map = new google.maps.Map(mapCanvas, mapOptions);
 
   geocoder = new google.maps.Geocoder();
+  openInfoWindow = null;
 }
 
-function AddressMarker(address, user, point) {
-  geocoder.geocode( { 'address': address}, function(results, status) {
-    if (status == google.maps.GeocoderStatus.OK) {
-      map.setCenter(results[0].geometry.location);
-      var marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location,
-          title: address
-      });
-      
-      if (point === "to") marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
 
-      openInfoWindow = null;
+function AddRoute(from, to ,user){
+  var from_latlng = null;
+  geocoder.geocode( {'address': from}, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK){
+      from_latlng = results[0].geometry.location;
+      //map.setCenter(to_latlng);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: from_latlng,
+        title: from
+      });
 
       var contentString = '<div id="content" style="max-height:200px; max-width:200px; padding:10px 10px 10px 10px;">'+
           '<div id="siteNotice">'+
           '</div>'+
-          '<h4 id="firstHeading" class="firstHeading">' + user + '</h4>'+
+          '<h4 id="firstHeading" class="firstHeading">'+user+'</h4>'+
           '<div id="bodyContent">'+
-          '<p>' + address + '</p>' +
+          '<p>' + from + '</p>' +
           '</div>'+
           '</div>';
       var info = new google.maps.InfoWindow({
         content: contentString
       });
 
-      google.maps.event.addListener(marker, 'click', function() {
+      google.maps.event.addListener(marker, 'click', function(){
         if (openInfoWindow != null) openInfoWindow.close();
         openInfoWindow = info;
-        info.open(map,marker);
+        info.open(map, marker);
       });
-    
     } else {
       console.log("Geocode was not successful for the following reason: " + status);
     }
   });
+
+  var to_latlng = null;
+  geocoder.geocode( {'address': to}, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK){
+      to_latlng = results[0].geometry.location;
+      map.setCenter(to_latlng);
+
+      // set here to avoid asynchronous errors
+      drawPath(from_latlng, to_latlng);
+      
+      var marker = new google.maps.Marker({
+        map: map,
+        position: to_latlng,
+        title: to,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+      });
+
+      var contentString = '<div id="content" style="max-height:200px; max-width:200px; padding:10px 10px 10px 10px;">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h4 id="firstHeading" class="firstHeading">'+user+'</h4>'+
+          '<div id="bodyContent">'+
+          '<p>' + to + '</p>' +
+          '</div>'+
+          '</div>';
+      var info = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+
+      google.maps.event.addListener(marker, 'click', function(){
+        if (openInfoWindow != null) openInfoWindow.close();
+        openInfoWindow = info;
+        info.open(map, marker);
+      });
+    } else {
+      console.log("Geocode was not successful for the following reason: " + status);
+    }
+  });
+
+
+drawPath = function(from, to){
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+    var request = {
+      origin: from,
+      destination: to,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    var directionsService = new google.maps.DirectionsService();
+  
+    directionsService.route(request, function(response, status){
+      if (status == google.maps.DirectionsStatus.OK){
+        directionsDisplay.setDirections(response);
+      }
+      else{
+        console.log("Error Response from directions service: " + status + response);
+      }
+  });
+  }
+
 }
+
 $(document).ready(function(){
 initialize();
 
 function addMarkers(){
 <% @travels.each do |travel| %>
-    AddressMarker("<%= travel.to %>", "<%= travel.user.name %>", "to");
-    AddressMarker("<%= travel.from %>", "<%= travel.user.name %>", "from");
-  <% end %>}
+    AddRoute("<%= travel.from %>", "<%= travel.to %>", "<%= travel.user.name %>");
+  <% end %>
+}
 addMarkers();
 });
 </script>
-
-
-
 <table>
   <thead>
     <tr>
