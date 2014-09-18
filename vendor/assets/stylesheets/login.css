@@ -8,7 +8,7 @@ body{
 
 .button{
   /*width:100px;*/
-  background:#3399cc;
+  background:rgba(204, 112, 51, 0.80);
   display:block;
   margin:0 auto;
   margin-top:1%;
@@ -22,7 +22,7 @@ body{
 }
 
 .button:hover{
-  background:#2288bb;
+  background:rgba(204, 112, 51, 0.80);
 }
 
 #login{
@@ -38,13 +38,13 @@ body{
   width:0;
   border-top:12x solid transparent;
   border-right:12px solid transparent;
-  border-bottom:12px solid #3399cc;
+  border-bottom:12px solid rgba(204, 112, 51, 0.80);
   border-left:12px solid transparent;
   margin:0 auto;
 }
 
 #login h1{
-  background:#3399cc;
+  background:rgba(204, 112, 51, 0.80);
   padding:20px 0;
   font-size:140%;
   font-weight:300;
@@ -53,16 +53,16 @@ body{
 }
 
 form{
-  background:#f0f0f0;
+  /*background:#f0f0f0;*/
   /*padding:6% 4%;*/
 }
 
 input[type="email"],[type="text"],[type="number"]input[type="password"]{
   width:92%;
   background:#fff;
-  margin-bottom:4%;
+  margin-bottom:3%;
   border:1px solid #ccc;
-  padding:4%;
+  padding:3%;
   font-family:'Open Sans',sans-serif;
   font-size:95%;
   color:#555;
@@ -70,9 +70,9 @@ input[type="email"],[type="text"],[type="number"]input[type="password"]{
 
 input[type="submit"]{
   width:100%;
-  background:#3399cc;
+  background:rgba(204, 112, 51, 0.80);
   border:0;
-  padding:4%;
+  padding:3%;
   font-family:'Open Sans',sans-serif;
   font-size:100%;
   color:#fff;
@@ -82,5 +82,5 @@ input[type="submit"]{
 }
 
 input[type="submit"]:hover{
-  background:#2288bb;
+  background:rgba(204, 112, 51, 0.80);
 }

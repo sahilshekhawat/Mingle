@@ -1,3 +1,5 @@
+<div class="transblack2">
+<%= link_to 'New Travel', new_travel_path, :class => "btn btn-primary"%>
 <h1>Listing travels</h1>
 
 <table>
@@ -18,7 +20,7 @@
         <td><%= travel.from %></td>
         <td><%= travel.to %></td>
         <td><%= travel.datetime %></td>
-        <td><%= travel.user %></td>
+        <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
         <td><%= travel.medium %></td>
         <td><%= link_to 'Show', travel %></td>
         <td><%= link_to 'Edit', edit_travel_path(travel) %></td>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Travel', new_travel_path %>
+</div>

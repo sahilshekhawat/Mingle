@@ -4,19 +4,19 @@
 
 <div id="slideshow"> 
 		<div id="login">
-			<h1>Log in</h1>
-			
+			<div class="transblack2">
+			<h1>Sign In</h1><br>
 			<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-			<div class="alert-danger alert" style="padding: 0px 0px 0px 0px">
+			<div>
         <%= devise_error_messages! %> 
         </div>	<div style = " text-align: center">
 			<%= f.email_field :email, :placeholder => "Email", :style => "width: 92%;background: #fff;margin-bottom: 4%;border: 1px solid #ccc;padding: 4%;font-family: 'Open Sans',sans-serif;font-size: 95%;color: #555;", autofocus: true %>
 			<%= f.password_field :password, :type => "password", :placeholder => "Password", :style => "width: 92%;background: #fff;margin-bottom: 4%;border: 1px solid #ccc;padding: 4%;font-family: 'Open Sans',sans-serif;font-size: 95%;color: #555;" %><br>
-			<%= f.check_box :remember_me, :type => "checkbox", :name => "rem", :value => "1" %> <%= f.label :remember_me %>
+			<div style="display:none"><%= f.check_box :remember_me, :type => "checkbox", :name => "rem", :value => "1",:checked => true %> <%= f.label :remember_me %></div>
 			<%= f.submit "Sign in" %>					    
 			<% end %>
 			<%# link_to  user_omniauth_authorize_path(:facebook),:class => "button" do%><!-- <i class="fa fa-facebook-square"></i> Sign in with facebook <%#end%> -->
 		</div>
-		<%= render "devise/shared/links" %>
-		
+		<%= link_to "Forgot password?", new_password_path(resource_name), :class => 'button' %>
+		</div>
 	</div>
