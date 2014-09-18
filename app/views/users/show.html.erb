@@ -1,22 +1,105 @@
-<p id="notice"><%= notice %></p>
+<style>
+	body {
+		background: url(/assets/heyo.jpg) !important;
+	}
+	.icon_container li {
+        display: inline;
+        float:  left;
+        width:15%;
+    }
+</style>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
 
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
+<div class="transblack2">
+<div class="page-header">
+    <h1 style="color:white;"><%= @user.name %></h1>
+</div>
 
-<p>
-  <strong>Roll no:</strong>
-  <%= @user.roll_no %>
-</p>
+<!-- Blog Layout - START -->
+<div class="row wrap">
+    <div class="col-sm-3">
+        <div class="row" style="background-blend-mode: inherit;">
+            
+                <h2 style="color:white;">Latest Travels</h2>
+            
+                    <!-- <div class="panel-heading" style="color:white;"><h4>Date</h4></div> -->
+                    <div class="panel-body" >
+                        <!-- <ul class="icon_container">
+                            <li>
+                                <img class="img-responsive" src="/assets/delhi.png">
+                            </li> -->
+                       
+                        
+                    </div>
+                        
+                        <% @user.travel.each do |t| %>
+                        <h4 style="color:white;">
+                        From: <%= t.from %>
+                        <h4 style="color:white;">
+                        To: <%= t.to %>
+                        </h4>
+                        <% if t.datetime < DateTime.now %>
+                        <h4 style="color:white;">
+                        Time: <%= t.datetime %>
+                        </h4>
+                        <h4 style="color:white;">
+                        Medium: <%= t.medium %>
+                        </h4>
+						
+						
+						
+						<% end %>
+						<% end %>
 
-<p>
-	<strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<% if @user.id == current_user.id  %><%= link_to 'Edit Profile', edit_user_path(@user) %> <%end%>	
+                        
+                        
+        </div>
+    </div>
+    <div class="col-sm-9" style="color:white;">
+        <div class="row">
+            <div class="col-xs-12">    
+            <hr>
+            <div class="row">
+                <div class="col-xs-12" >
+                    <h2 style="font-size:3em;">Personal Details</h2>
+                    
+                    <h4 style="font-size:1.7em;">
+                        Student ID: <%= @user.roll_no %>
+                    </h4>
+                    <h4 style="font-size:1.7em;">
+                        Email: <%= @user.email %>
+                    </h4>
+                    <h4 style="font-size:1.7em;">
+                        Phone: <%= @user.phone %>
+                    </h4 style="font-size:1.7em;">
+                
+            </div>
+<% if @user.id == current_user.id  %><%= link_to 'Edit Profile', edit_user_path(@user) ,:class => "btn btn-info"%> <%end%>	
+        </div>
+            <hr>
+    </div>
+
+    <div class="col-sm-9" style="color:white;">
+        <div class="row">
+            <div class="col-xs-12">
+                
+        <div class="row">
+            
+            <h4>add</h4>
+            <br>
+            <br>
+            <h4>map</h4>
+            <br><br>
+            <h4>here</h4>
+
+
+        </div>
+        <hr/>
+    </div>
+</div>
+<!-- Blog Layout - END -->
+</div>
+
+
+
+
