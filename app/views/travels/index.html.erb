@@ -1,4 +1,77 @@
 <h1>Listing travels</h1>
+<style>
+    #map_canvas {
+      width: 500px;
+      height: 400px;
+}
+</style>
+<div id="map_canvas"></div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+
+<script type="text/javascript">
+  function initialize() {
+  var mapCanvas = $("#map_canvas")[0];
+  var mapOptions = {
+    center: new google.maps.LatLng(28.546088, 77.270870),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAPs,
+  };
+
+  map = new google.maps.Map(mapCanvas, mapOptions);
+
+  geocoder = new google.maps.Geocoder();
+}
+
+function AddressMarker(address, user, point) {
+  geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+      map.setCenter(results[0].geometry.location);
+      var marker = new google.maps.Marker({
+          map: map,
+          position: results[0].geometry.location,
+          title: address
+      });
+      
+      if (point === "to") marker.setIcon('http://maps.google.com/mapfiles/ms/icons/green-dot.png');
+
+      openInfoWindow = null;
+
+      var contentString = '<div id="content" style="max-height:200px; max-width:200px; padding:10px 10px 10px 10px;">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h4 id="firstHeading" class="firstHeading">' + user + '</h4>'+
+          '<div id="bodyContent">'+
+          '<p>' + address + '</p>' +
+          '</div>'+
+          '</div>';
+      var info = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      google.maps.event.addListener(marker, 'click', function() {
+        if (openInfoWindow != null) openInfoWindow.close();
+        openInfoWindow = info;
+        info.open(map,marker);
+      });
+    
+    } else {
+      console.log("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+function addMarkers(){
+  <% @travels.each do |travel| %>
+    AddressMarker("<%= travel.to %>", "<%= travel.user.name %>", "to");
+    AddressMarker("<%= travel.from %>", "<%= travel.user.name %>", "from");
+  <% end %>
+}
+google.maps.event.addDomListener(window, 'load', addMarkers);
+</script>
+
+
 
 <table>
   <thead>
