@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
@@ -33,9 +33,9 @@
       </div>
     </div>
 <br><br><br>
-<!-- <div class="container-fluid"> -->
-
 <!-- navbar till here, body now begins -->
+<div class="container-fluid">
+
    <% if flash[:notice] %>
     <div class="alert alert-success"><%= flash[:notice] %></div>
     <% elsif flash[:error] %>
@@ -45,7 +45,8 @@
     <% elsif flash[:info] %>
     <div class="alert alert-info"><%= flash[:notice] %></div>
   <% end %>
+  
 <%= yield %>
-<!-- </div> -->
+</div>
 </body>
 </html>
