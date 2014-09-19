@@ -144,7 +144,7 @@ addMarkers();
 
 <p>
   <strong>User:</strong>
-  <%= @travel.user %>
+  <%=link_to travel.user do%><%= travel.user.name %><%end%>
 </p>
 
 <p>
