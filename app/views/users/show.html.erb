@@ -1,3 +1,5 @@
+
+
 <style>
 	body {
 		background: url(/assets/heyo.jpg) !important;
@@ -10,6 +12,142 @@
 </style>
 
 
+
+<!-- ////////////////////////////////////////////////////////// -->
+<style>
+    #map_canvas {
+      width:800px;
+      height: 450px;
+}
+</style>
+
+<script type="text/javascript">
+  function initialize() {
+  var mapCanvas = $("#map_canvas")[0];
+  var mapOptions = {
+    center: new google.maps.LatLng(28.546088, 77.270870),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAPs,
+  };
+
+  map = new google.maps.Map(mapCanvas, mapOptions);
+
+  geocoder = new google.maps.Geocoder();
+  openInfoWindow = null;
+}
+
+
+function AddRoute(from, to ,user){
+  var from_latlng = null;
+  geocoder.geocode( {'address': from}, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK){
+      from_latlng = results[0].geometry.location;
+      //map.setCenter(to_latlng);
+      var marker = new google.maps.Marker({
+        map: map,
+        position: from_latlng,
+        title: from
+      });
+
+      var contentString = '<div id="content" style="max-height:200px; max-width:200px; padding:10px 10px 10px 10px;">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h4 id="firstHeading" class="firstHeading">'+user+'</h4>'+
+          '<div id="bodyContent">'+
+          '<p>' + from + '</p>' +
+          '</div>'+
+          '</div>';
+      var info = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+      google.maps.event.addListener(marker, 'click', function(){
+        if (openInfoWindow != null) openInfoWindow.close();
+        openInfoWindow = info;
+        info.open(map, marker);
+      });
+    } else {
+      console.log("Geocode was not successful for the following reason: " + status);
+    }
+  });
+
+  var to_latlng = null;
+  geocoder.geocode( {'address': to}, function(results, status){
+    if (status == google.maps.GeocoderStatus.OK){
+      to_latlng = results[0].geometry.location;
+      map.setCenter(to_latlng);
+
+      // set here to avoid asynchronous errors
+      drawPath(from_latlng, to_latlng);
+      
+      var marker = new google.maps.Marker({
+        map: map,
+        position: to_latlng,
+        title: to,
+        icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
+      });
+
+      var contentString = '<div id="content" style="max-height:200px; max-width:200px; padding:10px 10px 10px 10px;">'+
+          '<div id="siteNotice">'+
+          '</div>'+
+          '<h4 id="firstHeading" class="firstHeading">'+user+'</h4>'+
+          '<div id="bodyContent">'+
+          '<p>' + to + '</p>' +
+          '</div>'+
+          '</div>';
+      var info = new google.maps.InfoWindow({
+        content: contentString
+      });
+
+
+      google.maps.event.addListener(marker, 'click', function(){
+        if (openInfoWindow != null) openInfoWindow.close();
+        openInfoWindow = info;
+        info.open(map, marker);
+      });
+    } else {
+      console.log("Geocode was not successful for the following reason: " + status);
+    }
+  });
+
+
+drawPath = function(from, to){
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(map);
+    var request = {
+      origin: from,
+      destination: to,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    var directionsService = new google.maps.DirectionsService();
+  
+    directionsService.route(request, function(response, status){
+      if (status == google.maps.DirectionsStatus.OK){
+        directionsDisplay.setDirections(response);
+      }
+      else{
+        console.log("Error Response from directions service: " + status + response);
+      }
+  });
+  }
+
+}
+
+$(document).ready(function(){
+initialize();
+
+function addMarkers(){
+<% @user.travel.each do |t| %>
+    AddRoute("<%= t.from %>", "<%= t.to %>", "<%= t.user.name %>");
+  <% end %>
+}
+addMarkers();
+});
+</script>
+
+
+<!-- ////////////////////////////////////////////////////////// -->
+
 <div class="transblack2">
 <div class="page-header">
     <h1 style="color:white;"><%= @user.name %></h1>
@@ -18,10 +156,10 @@
 <!-- Blog Layout - START -->
 <div class="row wrap">
     <div class="col-sm-3">
-        <div class="row" style="background-blend-mode: inherit;">
+        <div class="row" >
             
-                <h2 style="color:white;">Latest Travels</h2>
-            
+                <h2 style="color:white; text-align:center;">Past Travels</h2>
+            		<hr width="70%">
                     <!-- <div class="panel-heading" style="color:white;"><h4>Date</h4></div> -->
                     <div class="panel-body" >
                         <!-- <ul class="icon_container">
@@ -33,70 +171,62 @@
                     </div>
                         
                         <% @user.travel.each do |t| %>
-                        <h4 style="color:white;">
-                        From: <%= t.from %>
-                        <h4 style="color:white;">
-                        To: <%= t.to %>
-                        </h4>
                         <% if t.datetime < DateTime.now %>
-                        <h4 style="color:white;">
-                        Time: <%= t.datetime %>
-                        </h4>
-                        <h4 style="color:white;">
-                        Medium: <%= t.medium %>
-                        </h4>
-						
-						
-						
+                        	
+                        	<h4 style="color:white;">
+                        	From: <%= t.from %>
+                        	<h4 style="color:white;">
+                        	To: <%= t.to %>
+                        	</h4>
+                        	
+                        	<h4 style="color:white;">
+                        	Time: <%= t.datetime %>
+                        	</h4>
+                        	<h4 style="color:white;">
+                        	Medium: <%= t.medium %>
+                        	</h4>
+                        	<hr width="50%">
 						<% end %>
 						<% end %>
 
                         
                         
         </div>
+
     </div>
+    <br><br><br>
     <div class="col-sm-9" style="color:white;">
         <div class="row">
             <div class="col-xs-12">    
-            <hr>
-            <div class="row">
+            <hr width="50%">
+            <div class="row" style="margin: 0 auto;text-align:center;">
                 <div class="col-xs-12" >
-                    <h2 style="font-size:3em;">Personal Details</h2>
-                    
-                    <h4 style="font-size:1.7em;">
+                    <h4 style="font-size:2em;">
                         Student ID: <%= @user.roll_no %>
                     </h4>
-                    <h4 style="font-size:1.7em;">
+                    <h4 style="font-size:2em;">
                         Email: <%= @user.email %>
                     </h4>
-                    <h4 style="font-size:1.7em;">
+                    <h4 style="font-size:2em;">
                         Phone: <%= @user.phone %>
-                    </h4 style="font-size:1.7em;">
+                    </h4 style="font-size:2em;">
                 
             </div>
-<% if @user.id == current_user.id  %><%= link_to 'Edit Profile', edit_user_path(@user) ,:class => "btn btn-info"%> <%end%>	
+            <% if @user.id == current_user.id  %><%= link_to 'Edit Profile', edit_user_path(@user) ,:class => "btn btn-info"%> <%end%>	
         </div>
-            <hr>
+            <hr width="50%">
     </div>
 
     <div class="col-sm-9" style="color:white;">
         <div class="row">
             <div class="col-xs-12">
                 
-        <div class="row">
-            
-            <h4>add</h4>
-            <br>
-            <br>
-            <h4>map</h4>
-            <br><br>
-            <h4>here</h4>
-
-
+            <div class="row">
+                <div id="map_canvas"></div>            
+            </div>
+        
         </div>
-        <hr/>
     </div>
-</div>
 <!-- Blog Layout - END -->
 </div>
 
