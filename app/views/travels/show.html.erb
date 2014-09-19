@@ -1,3 +1,4 @@
+<div class="transblack2">
 <style>
     #map_canvas {
       width: 500px;
@@ -143,7 +144,7 @@ addMarkers();
 
 <p>
   <strong>User:</strong>
-  <%= @travel.user %>
+  <%=link_to @travel.user do%><%= @travel.user.name %><%end%>
 </p>
 
 <p>
@@ -153,3 +154,4 @@ addMarkers();
 
 <%= link_to 'Edit', edit_travel_path(@travel) %> |
 <%= link_to 'Back', travels_path %>
+</div>
