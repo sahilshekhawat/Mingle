@@ -65,7 +65,7 @@ function AddRoute(from, to ,user){
       map.setCenter(to_latlng);
 
       // set here to avoid asynchronous errors
-      drawPath(from_latlng, to_latlng);
+      // drawPath(from_latlng, to_latlng);
       
       var marker = new google.maps.Marker({
         map: map,
@@ -86,6 +86,7 @@ function AddRoute(from, to ,user){
         content: contentString
       });
 
+      setTimeout(drawPath(from_latlng, to_latlng), 1000)
 
       google.maps.event.addListener(marker, 'click', function(){
         if (openInfoWindow != null) openInfoWindow.close();
