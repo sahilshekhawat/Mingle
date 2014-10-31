@@ -1,0 +1,33 @@
+<%= form_for(@cycle_issu_request) do |f| %>
+  <% if @cycle_issu_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cycle_issu_request.errors.count, "error") %> prohibited this cycle_issu_request from being saved:</h2>
+
+      <ul>
+      <% @cycle_issu_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cycleid %><br>
+    <%= f.number_field :cycleid %>
+  </div>
+  <div class="field">
+    <%= f.label :studentid %><br>
+    <%= f.number_field :studentid %>
+  </div>
+  <div class="field">
+    <%= f.label :to %><br>
+    <%= f.datetime_select :to %>
+  </div>
+  <div class="field">
+    <%= f.label :from %><br>
+    <%= f.datetime_select :from %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

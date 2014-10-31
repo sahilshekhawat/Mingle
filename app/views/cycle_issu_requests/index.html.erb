@@ -1,0 +1,31 @@
+<h1>Listing cycle_issu_requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Cycleid</th>
+      <th>Studentid</th>
+      <th>To</th>
+      <th>From</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cycle_issu_requests.each do |cycle_issu_request| %>
+      <tr>
+        <td><%= cycle_issu_request.cycleid %></td>
+        <td><%= cycle_issu_request.studentid %></td>
+        <td><%= cycle_issu_request.to %></td>
+        <td><%= cycle_issu_request.from %></td>
+        <td><%= link_to 'Show', cycle_issu_request %></td>
+        <td><%= link_to 'Edit', edit_cycle_issu_request_path(cycle_issu_request) %></td>
+        <td><%= link_to 'Destroy', cycle_issu_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cycle issu request', new_cycle_issu_request_path %>

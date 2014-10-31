@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cycleid: 1
+  studentid: 1
+  to: 2014-10-31 18:40:55
+  from: 2014-10-31 18:40:55
+
+two:
+  cycleid: 1
+  studentid: 1
+  to: 2014-10-31 18:40:55
+  from: 2014-10-31 18:40:55

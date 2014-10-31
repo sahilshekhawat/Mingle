@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140918173528) do
+ActiveRecord::Schema.define(version: 20141031131055) do
+
+  create_table "cycle_issu_requests", force: true do |t|
+    t.integer  "cycleid"
+    t.integer  "studentid"
+    t.datetime "to"
+    t.datetime "from"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "travels", force: true do |t|
     t.string   "from"
