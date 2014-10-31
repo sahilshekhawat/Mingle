@@ -5,13 +5,22 @@
 #   gem 'sqlite3'
 #
 default: &default
-  adapter: sqlite3
+  adapter: mysql2
+  database: mingle
   pool: 5
   timeout: 5000
+  username: root
+  password: '123'
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
-  <<: *default
-  database: db/development.sqlite3
+  adapter: mysql2
+  database: mingle
+  pool: 5
+  timeout: 5000
+  username: root
+  password: '123'
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
