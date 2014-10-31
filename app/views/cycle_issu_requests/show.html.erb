@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cycleid:</strong>
+  <%= @cycle_issu_request.cycleid %>
+</p>
+
+<p>
+  <strong>Studentid:</strong>
+  <%= @cycle_issu_request.studentid %>
+</p>
+
+<p>
+  <strong>To:</strong>
+  <%= @cycle_issu_request.to %>
+</p>
+
+<p>
+  <strong>From:</strong>
+  <%= @cycle_issu_request.from %>
+</p>
+
+<%= link_to 'Edit', edit_cycle_issu_request_path(@cycle_issu_request) %> |
+<%= link_to 'Back', cycle_issu_requests_path %>
