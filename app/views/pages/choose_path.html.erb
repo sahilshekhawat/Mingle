@@ -1,0 +1,40 @@
+<script>
+
+
+
+    BootstrapDialog.show({
+        title: 'You Must Choose Your Path!!',
+        message: function(dialog) {
+            var $content = $('<div><h1>Choose your path!</h1><button id="carpool" class="btn btn-success" style="height: 200px; width:200px; margin-left: 40px;">CarPool is Cool</button>' +
+                    '<button id="cycle" class="btn btn-success" style="margin-left: 90px; height: 200px; width: 200px;">CycleHire is High!</button></div>');
+            var $footerButton = dialog.getButton('btn-1');
+            $content.find('button').click({$footerButton: $footerButton}, function(event) {
+                event.data.$footerButton.enable();
+                event.data.$footerButton.stopSpin();
+                dialog.setClosable(true);
+            });
+
+            return $content;
+        },
+        buttons: [{
+            id: 'btn-1',
+            label: 'Click to disable and spin.',
+            action: function(dialog) {
+                var $button = this; // 'this' here is a jQuery object that wrapping the <button> DOM element.
+                $button.disable();
+                $button.spin();
+                dialog.setClosable(false);
+            }
+        }]
+    });
+
+
+</script>
+<script>
+  document.getElementById("carpool").onclick = function() {
+      location.href = "/";
+  }
+  document.getElementById("cycle").onclick = function() {
+      location.href = "/cycle";
+  }
+</script>
