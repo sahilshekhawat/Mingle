@@ -28,7 +28,7 @@ class CycleIssuRequestsController < ApplicationController
 
     respond_to do |format|
       if @cycle_issu_request.save
-        format.html { redirect_to @cycle_issu_request, notice: 'Cycle issu request was successfully created.' }
+        format.html { redirect_to @cycle_issu_request, notice: 'Cycle issue request was successfully created.' }
         format.json { render :show, status: :created, location: @cycle_issu_request }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CycleIssuRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @cycle_issu_request.update(cycle_issu_request_params)
-        format.html { redirect_to @cycle_issu_request, notice: 'Cycle issu request was successfully updated.' }
+        format.html { redirect_to @cycle_issu_request, notice: 'Cycle issue request was successfully updated.' }
         format.json { render :show, status: :ok, location: @cycle_issu_request }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CycleIssuRequestsController < ApplicationController
   def destroy
     @cycle_issu_request.destroy
     respond_to do |format|
-      format.html { redirect_to cycle_issu_requests_url, notice: 'Cycle issu request was successfully destroyed.' }
+      format.html { redirect_to cycle_issu_requests_url, notice: 'Cycle issue request was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
