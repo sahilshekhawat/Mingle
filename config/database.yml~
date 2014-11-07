@@ -9,12 +9,17 @@ default: &default
   database: mingle
   pool: 5
   timeout: 5000
+  username: root
+  password: '123'
+  socket: /var/run/mysqld/mysqld.sock
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: mingle
   pool: 5
   timeout: 5000
+  username: root
+  password: '123'
   
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

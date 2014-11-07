@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :cycles
+
   resources :cycle_issu_requests
 
   resources :travels

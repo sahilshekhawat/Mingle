@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107093730) do
+ActiveRecord::Schema.define(version: 20141107132146) do
 
   create_table "cycle_issu_requests", force: true do |t|
     t.integer  "cycleid"
@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 20141107093730) do
   end
 
   create_table "cycles", force: true do |t|
-    t.integer  "cycleid"
-    t.string   "model"
+    t.integer  "cycle_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
