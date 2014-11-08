@@ -48,11 +48,17 @@ a:hover{
         </div>
         <div class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
-          <% if user_signed_in? %>
-          <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>
-          <%else%>
-          <li><%= link_to( new_user_session_path) do %>Login<%end%>
-          <li><%= link_to( new_user_registration_path) do %>Register<%end%>
+
+            <% if user_signed_in? %>
+              <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>
+            <% else %>            
+            <li><%= link_to( new_user_session_path) do %>Login<%end%>
+            <li><%= link_to( new_user_registration_path) do %>Register<%end%>
+
+            
+            
+            
+
           <% end %>
           </ul>
         </div><!--/.nav-collapse -->
