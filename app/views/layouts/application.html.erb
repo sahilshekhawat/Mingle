@@ -51,7 +51,9 @@ a:hover{
 
 
             <% if user_signed_in? %>
-              <li><%= link_to current_user do %>Profile<%end%>
+              <% if params[:controller] == "travels" %>
+                <li><%= link_to current_user do %>Profile<%end%>
+              <%end%>
               <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>
             <% else %>            
                <li><%= link_to( new_user_session_path) do %>Login<%end%>
