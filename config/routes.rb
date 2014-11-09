@@ -61,7 +61,7 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  root to: "pages#choose_path "
+  root to: "pages#choose_path"
   get '/cycle' => 'cycle_issu_requests#index'
   get '/travel' => 'travels#index'
   get '/choose' => 'pages#choose_path'
