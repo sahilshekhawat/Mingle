@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Evs</title>
+  <title>Volks Voyage</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
@@ -26,10 +26,10 @@ a:hover{
   background-color: rgba(0, 0, 0, 0.4);
 }
 .transblack{
-  background-color: rgba(0, 0, 0, 0.7); 
+  background-color: rgba(0, 0, 0, 0.7);
 }
 .transblack2{
-  background-color: rgba(0, 0, 0, 0.5); 
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 5%;
   padding-top: 3%;
   color: #fff ;
@@ -80,7 +80,7 @@ a:hover{
     <% elsif flash[:info] %>
     <div class="alert alert-info"><%= flash[:notice] %></div>
   <% end %>
-  
+
 <%= yield %>
 </div>
 </body>

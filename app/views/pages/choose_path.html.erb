@@ -1,12 +1,10 @@
 <script>
-
-
-
     BootstrapDialog.show({
         title: 'You Must Choose Your Path!!',
         message: function(dialog) {
-            var $content = $('<div><h1>Choose your path!</h1><button id="carpool" class="btn btn-success" style="height: 200px; width:200px; margin-left: 40px;">CarPool is Cool</button>' +
-                    '<button id="cycle" class="btn btn-success" style="margin-left: 90px; height: 200px; width: 200px;">CycleHire is High!</button></div>');
+            var $content = $('<div><h1>Choose your path!</h1><button id="carpool" class="btn btn-success" style="height: 40px; width:150px; margin:auto;">CarPool is Cool</button>' +
+                    '<button id="cycle user" class="btn btn-success" style="margin-left: 10px; height: 40px; width: 150px;">Bicycle Ride</button>'+
+                    '<button id="cycle admin" class="btn btn-danger" style="margin-left: 10px; height: 40px; width: 150px;">Admin Panel</button></div>');
             var $footerButton = dialog.getButton('btn-1');
             $content.find('button').click({$footerButton: $footerButton}, function(event) {
                 event.data.$footerButton.enable();
@@ -27,14 +25,15 @@
             }
         }]
     });
-
-
 </script>
 <script>
   document.getElementById("carpool").onclick = function() {
       location.href = "/travel";
   }
-  document.getElementById("cycle").onclick = function() {
+  document.getElementById("cycle admin").onclick = function() {
       location.href = "/cycle";
+  }
+  document.getElementById("cycle user").onclick = function() {
+    location.href = "/riders"
   }
 </script>
