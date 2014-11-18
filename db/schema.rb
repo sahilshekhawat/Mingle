@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141107211633) do
+ActiveRecord::Schema.define(version: 20141118132429) do
 
   create_table "cycle_issu_requests", force: true do |t|
     t.integer  "cycleid"
@@ -43,6 +43,10 @@ ActiveRecord::Schema.define(version: 20141107211633) do
     t.string   "medium"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "tlatitude"
+    t.float    "tlongitude"
+    t.float    "flatitude"
+    t.float    "flongitude"
   end
 
   add_index "travels", ["user_id"], name: "index_travels_on_user_id"

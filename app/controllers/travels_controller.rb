@@ -79,6 +79,6 @@ class TravelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def travel_params
-      params.require(:travel).permit(:from, :to, :datetime, :user_id, :medium)
+      params.require(:travel).permit(:tlatitude, :tlongitude, :flatitude, :flongitude, :from, :to, :datetime, :user_id, :medium)
     end
 end

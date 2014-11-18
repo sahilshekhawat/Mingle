@@ -136,7 +136,11 @@ addMarkers();
   <thead>
     <tr>
       <th>From</th>
+      <th>From Lat</th>
+      <th>From Lon</th>
       <th>To</th>
+      <th>To Lat</th>
+      <th>To Lon</th>
       <th>Datetime</th>
       <th>User</th>
       <th>Medium</th>
@@ -148,7 +152,11 @@ addMarkers();
     <% @travels.each do |travel| %>
       <tr>
         <td><%= travel.from %></td>
+        <td><%= travel.flatitude %></td>
+        <td><%= travel.flongitude %></td>
         <td><%= travel.to %></td>
+        <td><%= travel.tlatitude %></td>
+        <td><%= travel.tlongitude %></td>
         <td><%= travel.datetime %></td>
         <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
         <td><%= travel.medium %></td>
