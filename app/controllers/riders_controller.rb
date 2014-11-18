@@ -28,7 +28,7 @@ class RidersController < ApplicationController
 
     respond_to do |format|
       if @rider.save
-        format.html { redirect_to @rider, notice: 'Rider was successfully created.' }
+        format.html { redirect_to @rider, notice: 'Your request is lodged successfully' }
         format.json { render :show, status: :created, location: @rider }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class RidersController < ApplicationController
   def update
     respond_to do |format|
       if @rider.update(rider_params)
-        format.html { redirect_to @rider, notice: 'Rider was successfully updated.' }
+        format.html { redirect_to @rider, notice: 'Your Path is successfully updated.' }
         format.json { render :show, status: :ok, location: @rider }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class RidersController < ApplicationController
   def destroy
     @rider.destroy
     respond_to do |format|
-      format.html { redirect_to riders_url, notice: 'Rider was successfully destroyed.' }
+      format.html { redirect_to riders_url, notice: 'Ride successfully cancelled.' }
       format.json { head :no_content }
     end
   end

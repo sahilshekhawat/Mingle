@@ -1,14 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Source:</strong>
+  <strong style = "color: white;">Source:</strong>
   <%= @rider.source %>
 </p>
 
 <p>
-  <strong>Destination:</strong>
+  <strong  style = "color: white;">Destination:</strong>
   <%= @rider.destination %>
 </p>
-
-<%= link_to 'Edit', edit_rider_path(@rider) %> |
-<%= link_to 'Back', riders_path %>
+<%= link_to 'Back', riders_path , :class => "btn btn-success"%>
+<%= link_to 'Edit', edit_rider_path(@rider), :class => "btn btn-info"%>
