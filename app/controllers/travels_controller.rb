@@ -5,6 +5,14 @@ class TravelsController < ApplicationController
   # GET /travels.json
   def index
     @travels = Travel.all
+    @hash = Gmaps4rails.build_markers(@travels) do |travel, markerfrom|
+      markerfrom.lat travel.flatitude
+      markerfrom.lng travel.flongitude
+    end
+    @hash = Gmaps4rails.build_markers(@travels) do |travel, markerto|
+      markerto.lat travel.tlatitude
+      markerto.lng travel.tlongitude
+    end
   end
 
   # GET /travels/1
@@ -70,6 +78,10 @@ class TravelsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def gmaps4rails_infowindow
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
