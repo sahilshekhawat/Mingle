@@ -61,6 +61,14 @@ class CycleIssuRequestsController < ApplicationController
     end
   end
 
+
+  def get_ride
+  end
+
+  def cycle_dashboard
+    @cycle_issu_requests = CycleIssuRequest.all
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cycle_issu_request

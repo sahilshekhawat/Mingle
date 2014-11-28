@@ -1,0 +1,29 @@
+<h1>Cycle Dashboard</h1>
+
+<%= link_to 'Get a Ride', new_cycle_issu_request_path, :class => "btn btn-lg btn-info" %>
+
+<div class="col-sm-9" style="color:white;">
+        <div class="row">
+            <div class="col-xs-12">    
+            <hr width="50%">
+            <div class="row" style="margin: 0 auto;text-align:center;">
+                <div class="col-xs-12" >
+                    <h4 style="font-size:2em;">
+                        Student ID: <%= @cycle_issu_requests.user.roll_no %>
+                    </h4>
+                    <h4 style="font-size:2em;">
+                        Email: <%= @user.email %>
+                    </h4>
+                    <h4 style="font-size:2em;">
+                        Phone: <%= @user.phone %>
+                    </h4 style="font-size:2em;">
+
+                
+            </div>
+
+            
+        </div>
+            <hr width="50%">
+    </div>
+
+
