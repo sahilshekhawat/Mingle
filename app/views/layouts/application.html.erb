@@ -8,8 +8,7 @@
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
-<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/2.jpg) no-repeat;background-size: 100%;"<%end%>>
-
+<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/3.jpg) no-repeat;background-size: 100%;"<%end%>> 
 <style>
 a:hover{
   text-decoration: none !important;
@@ -60,7 +59,6 @@ a:hover{
               
               <% if params[:controller] == "users" %>
                 <li><%= link_to edit_user_registration_path do %>Manage Account<%end%>
-                <li><%= link_to edit_user_path do%>Edit Profile<%end%>
               <%end%>
               
               <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>

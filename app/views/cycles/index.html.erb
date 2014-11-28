@@ -1,16 +1,16 @@
-<h1 style = "color: white;">Listing cycles</h1>
+<h1>Listing cycles</h1>
 <%= link_to 'Add Cycle', new_cycle_path, :class => "btn btn-lg btn-info"  %>
 <table>
   <thead>
     <tr>
-      <th style = "color: white;font-size: 16px;">Cycles Added</th>
+      <th style = "font-size: 16px;">Cycles Added</th>
       <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
     <% @cycles.each do |cycle| %>
       <tr>
-        <td style = "color: white;"><%= cycle.cycle_id %></td>
+        <td><%= cycle.cycle_id %></td>
         <!-- <td><%= link_to 'Show', cycle %></td> -->
         <td><%= link_to 'Edit', edit_cycle_path(cycle), :class => "btn btn-xs btn-success" %></td>
         <td><%= link_to 'Remove', cycle, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" %></td>
@@ -19,3 +19,6 @@
   </tbody>
 </table>
 <br>
+
+<%=  link_to 'Admin home', '/cycle' %>
+

@@ -57,6 +57,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def cycle_dashboard
+    if params[:id].nil? # if there is no user id in params, show current one
+      @user = current_user
+    else # if there is the user id in params just use it, 
+     # maybe get 'authorization failed'
+      @user = User.find params[:id]
+    end
+  end
+
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy

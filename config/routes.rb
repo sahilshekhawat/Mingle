@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :riders
-
   resources :cycles
 
   resources :cycle_issu_requests
@@ -67,5 +65,5 @@ Rails.application.routes.draw do
   get '/cycle' => 'cycle_issu_requests#index'
   get '/travel' => 'travels#index'
   get '/choose' => 'pages#choose_path'
-  get '/dashboard' => 'cycle_issu_requests#cycle_dashboard'
+  get '/dashboard' => 'users#cycle_dashboard'
 end

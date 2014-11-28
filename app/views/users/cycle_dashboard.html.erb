@@ -1,0 +1,39 @@
+<div class="row" >
+<h3 style="margin: 0 auto;text-align:right;">Number of Available Cycles: </h3>
+<h1>Cycle Dashboard</h1>
+
+
+button should automatically fill the form for cycle_issue_request, with required parameters, and assign a random available cycle <br>
+it should fill the following data automatically:
+<br>1). student ID
+<br>2). random cycle ID (from a pool of available cycles)
+<br>3). From (time) parameter (leave the To parameter)
+<br>
+It should not:
+<br>1). open the form 
+<br>2). ask for any kind of input
+<br>
+
+<%= link_to 'Get a Ride', new_cycle_issu_request_path, :class => "btn btn-lg btn-info" %>
+    <div class="col-xs-12">    
+    <div class="row" style="margin: 0 auto;text-align:right;">
+        <div class="col-xs-12" >
+            <h4 style="font-size:2em;">
+                Name: <%= @user.name %>
+            </h4>
+
+            <h4 style="font-size:2em;">
+                Student ID: <%= @user.roll_no %>
+            </h4>
+            <h4 style="font-size:2em;">
+                Email: <%= @user.email %>
+            </h4>
+            <h4 style="font-size:2em;">
+                Phone: <%= @user.phone %>
+            </h4 style="font-size:2em;">
+    </div>    
+</div>
+
+
+
+<h2>Past cycle issues</h2>

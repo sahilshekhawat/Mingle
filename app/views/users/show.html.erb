@@ -19,48 +19,48 @@
 
 <div class="transblack2">
 <div class="page-header">
-    <h1 style="color:white;"><%= @user.name %></h1>
+    <h1><%= @user.name %></h1>
 </div>
 
 <!-- Blog Layout - START -->
 <div class="row wrap">
     <div class="col-sm-3">
         <div class="row" >
-                <h2 style="color:white; text-align:center;">Past Travels</h2> (in the last 2 days)
+                <h2 style="text-align:center;">Past Travels</h2> (in the last 2 days)
                     <div class="panel-body" >
                     </div>
                         <% @user.travel.each do |t| %>
                         <% if t.datetime < DateTime.now && ((t.datetime - DateTime.now)/(24*60*60)) > -2%>
                         	 
-                           <h4 style="color:white;">
+                           <h4>
                         	 From: <%= t.from %>
-                        	 <h4 style="color:white;">
+                        	 <h4>
                         	 To: <%= t.to %>
                         	 </h4>
-                        	 <h4 style="color:white;">
+                        	 <h4>
                         	 Time: <%= t.datetime %>
                         	 </h4>
-                        	 <h4 style="color:white;">
+                        	 <h4>
                         	 Medium: <%= t.medium %>
                         	 </h4>
                         	 <hr width="40%">
 						            <% end %>
                         <% end %>
 
-            <h2 style="color:white; text-align:center;">Future Travels </h2> (in the next 5 days)
+            <h2 style="text-align:center;">Future Travels </h2> (in the next 5 days)
                     <div class="panel-body" >                        
                     </div>
                         <% @user.travel.each do |t| %>
                         <% if t.datetime > DateTime.now && (t.datetime - DateTime.now)/(24*60*60)<5 %>
-                          <h4 style="color:white;">
+                          <h4>
                           From: <%= t.from %>
-                          <h4 style="color:white;">
+                          <h4>
                           To: <%= t.to %>
                           </h4>
-                          <h4 style="color:white;">
+                          <h4>
                           Time: <%= t.datetime %>
                           </h4>
-                          <h4 style="color:white;">
+                          <h4>
                           Medium: <%= t.medium %>
                           </h4>
                           <hr width="40%">
@@ -70,7 +70,7 @@
 
     </div>
     <br><br><br>
-    <div class="col-sm-9" style="color:white;">
+    <div class="col-sm-9">
         <div class="row">
             <div class="col-xs-12">    
             <hr width="50%">
@@ -93,13 +93,13 @@
         </div>
             <hr width="50%">
     </div>
-    <h3 style="color:white; text-align:center;">Timeline (travels in +- 5 hours) </h3> 
+    <h3 style="text-align:center;">Timeline (travels in +- 5 hours) </h3> 
     <div class="panel-body" >                        
     </div>                        
     <% @user.travel.each do |t| %>
     <% if t.datetime < DateTime.now %>
       <%if (( t.datetime - DateTime.now )/(60*60)).round() > -5%>
-        <h5 style="color:white;">Travelled from <%= t.from %> to <%= t.to %>
+        <h5>Travelled from <%= t.from %> to <%= t.to %>
         at <%= t.datetime %> via <%= t.medium %> in about <%= -(( t.datetime - DateTime.now )/(60*60)).round() %> hours from ago
         </h5>
       <% end %>
@@ -107,7 +107,7 @@
 
     <% if t.datetime > DateTime.now %>
       <%if (( t.datetime - DateTime.now )/(60*60)).round() < 5%>
-        <h5 style="color:white;">Travelling from <%= t.from %> to <%= t.to %>
+        <h5>Travelling from <%= t.from %> to <%= t.to %>
         at <%= t.datetime %> via <%= t.medium %> in about <%= (( t.datetime - DateTime.now )/(60*60)).round() %> hours from now
         </h5>
       <% end %>
@@ -115,7 +115,7 @@
     <% end %>
         
     <br><br>
-    <div class="col-sm-9" style="color:white;">
+    <div class="col-sm-9">
         <div class="row">
             <div class="col-xs-12">
                 
@@ -128,7 +128,7 @@
 <!-- Blog Layout - END -->
 </div>
 
-<div style='width: 1000px;'>
+<div style='width: 800px;'>
   <div id="directions" style='width: 800px; height: 400px;'></div>
 </div>
 
