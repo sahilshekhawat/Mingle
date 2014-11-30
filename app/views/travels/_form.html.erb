@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :from %><br>
-    <%= f.text_field :from %>
+    <p style = "color: black"><%= f.text_field :from %></p>
   </div>
   <!-- <div class="field">
     <%= f.label :flatitude %><br>
@@ -26,9 +26,8 @@
    -->
   <div class="field">
     <%= f.label :to %><br>
-    <%= f.text_field :to %>
+    <p style = "color: black"><%= f.text_field :to %></p>
   </div>
-
   <!-- <div class="field">
     <%= f.label :tlatitude %><br>
     <%= f.text_field :tlatitude %>
@@ -37,7 +36,6 @@
     <%= f.label :tlongitude %><br>
     <%= f.text_field :tlongitude %>
   </div> -->
-  
   <div class="field">
     <%= f.label :datetime %><br>
     <%= f.datetime_select :datetime %>
@@ -45,9 +43,11 @@
     <%= f.hidden_field :user_id , value: current_user.id%>
   <div class="field">
     <%= f.label :medium %><br>
-    <%= f.text_field :medium %>
+    <p style = "color:black"><%= f.text_field :medium %></p>
   </div>
   <div class="actions">
     <%= f.submit "Submit", :class => "btn btn-success"%>
+    <%= link_to 'Back', travels_path, :class => "btn btn-primary"%>
   </div>
+</div>
 <% end %>

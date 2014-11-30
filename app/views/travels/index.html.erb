@@ -3,62 +3,58 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-map will show one travel at a time. I think adding all travels on a single map is a bad idea<br>
+<!-- map will show one travel at a time. I think adding all travels on a single map is a bad idea<br>
 The user will select (like being over some travel option), and the map will show that path only<br>
 Functionality to be added:<br>
 user selects a travel, the map window shows the directions<br><br>
 Bug:<br>
 All Maps (for each travel) are getting overlapped (i.e. different map generated for different window)
+ -->
 
-<br>
-<%= link_to 'New Travel', new_travel_path, :class => "btn btn-primary"%>
-<br><br><br>
+<h1 style = "font-family: Bubbler One;font-size: 50px;color: #0099CC;">Pool your Travel</h1>
+<%= link_to 'New Travel', new_travel_path, :class => "btn btn-info"%>
 
-<div style='width: 1000px;'>
-  <div id="directions" style='width: 800px; height: 400px;'></div>
+<div style = "margin-top: 2%;">
+  <div id="directions" style='margin-left: auto;margin-right: auto;padding-right: 0;padding-left: 0;width: 100%; height: 400px;'></div>
 </div>
 
-
- <table>
-  <thead>
-    <tr>
-      <th>From</th>
-      <th>From Lat</th>
-      <th>From Lon</th>
-      <th>To</th>
-      <th>To Lat</th>
-      <th>To Lon</th>
-      <th>Datetime</th>
-      <th>User</th>
-      <th>Medium</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @travels.each do |travel| %>
-      <tr>
-        <td><%= travel.from %></td>
-        <td><%= travel.flatitude %></td>
-        <td><%= travel.flongitude %></td>
-        <td><%= travel.to %></td>
-        <td><%= travel.tlatitude %></td>
-        <td><%= travel.tlongitude %></td>
-        <td><%= travel.datetime %></td>
-        <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
-        <td><%= travel.medium %></td>
-        <td><%= link_to 'Show', travel %></td>
-        <td><%= link_to 'Edit', edit_travel_path(travel) %></td>
-        <td><%= link_to 'Destroy', travel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
+<div class = "panel panel-info" style = "margin-top: 2%;">
+  <div class = "panel-heading">Your Travels</div>
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>From</th>
+          <th>From Lat</th>
+          <th>From Lon</th>
+          <th>To</th>
+          <th>To Lat</th>
+          <th>To Lon</th>
+          <th>Date & Time</th>
+          <th>User</th>
+          <th>Medium</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @travels.each do |travel| %>
+          <tr>
+            <td><%= travel.from %></td>
+            <td><%= travel.flatitude %></td>
+            <td><%= travel.flongitude %></td>
+            <td><%= travel.to %></td>
+            <td><%= travel.tlatitude %></td>
+            <td><%= travel.tlongitude %></td>
+            <td><%= travel.datetime %></td>
+            <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
+            <td><%= travel.medium %></td>
+            <td><%= link_to 'Show', travel, :class => "btn btn-xs btn-primary" %></td>
+            <td><%= link_to 'Edit', edit_travel_path(travel), :class => "btn btn-xs btn-primary" %></td>
+            <td><%= link_to 'Cancel', travel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 </div>
-
 
 <!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -79,7 +75,7 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
         directionsDisplay.setDirections(response);
       }
     });
-  }  
+  }
 
 $(document).ready(function(){
 function addDirections(){
@@ -87,7 +83,7 @@ function addDirections(){
     calcRoute("<%= travel.flatitude %>", "<%= travel.flongitude %>", "<%= travel.tlatitude %>", "<%= travel.tlongitude %>");
   <% end %>
   }
-  addDirections();  
+  addDirections();
 });
 
   var handler = Gmaps.build('Google');
