@@ -14,6 +14,7 @@ body {
 }
 </style>
 <div class="transblack2">
+<<<<<<< HEAD
 	<div class="page-header">
 		<h1><%= @user.name %></h1>
 	</div>
@@ -164,3 +165,165 @@ body {
 
 							</script>
 							<!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
+=======
+<div class="page-header">
+    <h1><%= @user.name %></h1>
+</div>
+
+<!-- Blog Layout - START -->
+<div class="row wrap">
+    <div class="col-sm-3">
+        <div class="row" >
+                <h2 style="text-align:center;">Past Travels</h2> (in the last 2 days)
+                    <div class="panel-body" >
+                    </div>
+                        <% @user.travel.each do |t| %>
+                        <% if t.datetime < DateTime.now && ((t.datetime - DateTime.now)/(24*60*60)) > -2%>
+
+                           <h4>
+                        	 From: <%= t.from %>
+                        	 <h4>
+                        	 To: <%= t.to %>
+                        	 </h4>
+                        	 <h4>
+                        	 Time: <%= t.datetime %>
+                        	 </h4>
+                        	 <h4>
+                        	 Medium: <%= t.medium %>
+                        	 </h4>
+                        	 <hr width="40%">
+						            <% end %>
+                        <% end %>
+
+            <h2 style="text-align:center;">Future Travels </h2> (in the next 5 days)
+                    <div class="panel-body" >
+                    </div>
+                        <% @user.travel.each do |t| %>
+                        <% if t.datetime > DateTime.now && (t.datetime - DateTime.now)/(24*60*60)<5 %>
+                          <h4>
+                          From: <%= t.from %>
+                          <h4>
+                          To: <%= t.to %>
+                          </h4>
+                          <h4>
+                          Time: <%= t.datetime %>
+                          </h4>
+                          <h4>
+                          Medium: <%= t.medium %>
+                          </h4>
+                          <hr width="40%">
+            <% end %>
+            <% end %>
+        </div>
+
+    </div>
+    <br><br><br>
+    <div class="col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+            <hr width="50%">
+            <div class="row" style="margin: 0 auto;text-align:center;">
+                <div class="col-xs-12" >
+                    <h4 style="font-size:2em;">
+                        Student ID: <%= @user.roll_no %>
+                    </h4>
+                    <h4 style="font-size:2em;">
+                        Email: <%= @user.email %>
+                    </h4>
+                    <h4 style="font-size:2em;">
+                        Phone: <%= @user.phone %>
+                    </h4 style="font-size:2em;">
+
+
+            </div>
+
+
+        </div>
+            <hr width="50%">
+    </div>
+    <h3 style="text-align:center;">Timeline (travels in +- 5 hours) </h3>
+    <div class="panel-body" >
+    </div>
+    <% @user.travel.each do |t| %>
+    <% if t.datetime < DateTime.now %>
+      <%if (( t.datetime - DateTime.now )/(60*60)).round() > -5%>
+        <h5>Travelled from <%= t.from %> to <%= t.to %>
+        at <%= t.datetime %> via <%= t.medium %> in about <%= -(( t.datetime - DateTime.now )/(60*60)).round() %> hours from ago
+        </h5>
+      <% end %>
+    <% end %>
+
+    <% if t.datetime > DateTime.now %>
+      <%if (( t.datetime - DateTime.now )/(60*60)).round() < 5%>
+        <h5>Travelling from <%= t.from %> to <%= t.to %>
+        at <%= t.datetime %> via <%= t.medium %> in about <%= (( t.datetime - DateTime.now )/(60*60)).round() %> hours from now
+        </h5>
+      <% end %>
+    <% end %>
+    <% end %>
+
+    <br><br>
+    <div class="col-sm-9">
+        <div class="row">
+            <div class="col-xs-12">
+
+            <div class="row">
+                <div id="map_canvas"></div>
+            </div>
+
+        </div>
+    </div>
+<!-- Blog Layout - END -->
+</div>
+
+<div style='width: 800px;'>
+  <div id="directions" style='width: 800px; height: 400px;'></div>
+</div>
+
+
+
+
+<!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
+
+<script type="text/javascript">
+  var directionsDisplay = new google.maps.DirectionsRenderer();
+  var directionsService = new google.maps.DirectionsService();
+
+  function calcRoute(flat, flong, tlat, tlong) {
+
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+
+    directionsDisplay.setMap(handler.getMap());
+   
+    var origin      = new google.maps.LatLng(flat, flong);
+    var destination = new google.maps.LatLng(tlat, tlong);
+    var request = {
+        origin:      origin,
+        destination: destination,
+        travelMode:  google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request, function(response, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay.setDirections(response);
+      }
+    });
+  }
+
+$(document).ready(function(){
+function addDirections(){
+  <% @user.travel.each do |travel| %>
+    calcRoute("<%= travel.flatitude %>", "<%= travel.flongitude %>", "<%= travel.tlatitude %>", "<%= travel.tlongitude %>");
+  <% end %>
+  }
+  addDirections();
+});
+
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: {id: 'directions'}}, function(){
+    directionsDisplay.setMap(handler.getMap());
+  });
+
+</script>
+<!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
+>>>>>>> FETCH_HEAD
