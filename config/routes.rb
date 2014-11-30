@@ -67,4 +67,6 @@ Rails.application.routes.draw do
   get '/choose' => 'pages#choose_path'
   get '/dashboard' => 'users#cycle_dashboard'
   get '/about' => 'pages#about_path'
+  get '/join/:id/' => "travels#join"
 end
+

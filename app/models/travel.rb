@@ -4,6 +4,7 @@ class Travel < ActiveRecord::Base
   geocoded_by :to, latitude: :tlatitude, longitude: :tlongitude
   geocoded_by :from, latitude: :flatitude, longitude: :flongitude
   after_validation  :geocode_both
+  serialize :collaborators, Array
 
   def geocode_both
     end_coordinates = Geocoder.coordinates(self.to)

@@ -17,35 +17,30 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
 <div style = "margin-top: 2%;">
   <div id="directions" style='margin-left: auto;margin-right: auto;padding-right: 0;padding-left: 0;width: 100%; height: 400px;'></div>
 </div>
-
+<style>
+tr:hover{
+  background-color: rgba(6, 3, 3, 0.14);
+}
+</style>
 <div class = "panel panel-info" style = "margin-top: 2%;">
   <div class = "panel-heading">Your Travels</div>
     <table class = "table">
       <thead>
         <tr>
           <th>From</th>
-          <th>From Lat</th>
-          <th>From Lon</th>
           <th>To</th>
-          <th>To Lat</th>
-          <th>To Lon</th>
           <th>Date & Time</th>
           <th>User</th>
           <th>Medium</th>
-          <th colspan="3"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
         <% @travels.each do |travel| %>
-        <%= link_to  travel do%>
-          <tr>
+          <tr onclick="window.document.location = '/travels/<%=travel.id%>'">
             <td><%= travel.from %></td>
-            <td><%= travel.flatitude %></td>
-            <td><%= travel.flongitude %></td>
             <td><%= travel.to %></td>
-            <td><%= travel.tlatitude %></td>
-            <td><%= travel.tlongitude %></td>
-            <td><%= travel.datetime %></td>
+            <td><%=time_ago_in_words travel.datetime %></td>
             <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
             <td><%= travel.medium %></td>
             <td>
@@ -60,10 +55,17 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
             <%= link_to travel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" do %>
               <span class="fa fa-trash"></span>
               <%end%>
+            <% else %>
+            <%= link_to "/join/#{travel.id}",  :class => "btn btn-xs btn-danger" do %>
+              <% if travel.collaborators.include? current_user.id %>
+              <span class="fa fa-minus"></span>
+              <%else %>
+              <span class="fa fa-plus"></span>
+              <% end%>
+              <%end%>
             <%end%>
             </td>
           </tr>
-          <% end %>
         <% end %>
       </tbody>
     </table>

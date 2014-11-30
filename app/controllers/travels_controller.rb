@@ -80,6 +80,16 @@ class TravelsController < ApplicationController
     end
   end
 
+  def join
+    travel = Travel.find(params[:id])
+    if travel.collaborators.include? current_user.id
+      travel.collaborators.delete current_user.id
+    else
+      travel.collaborators << current_user.id
+    end
+    travel.save!
+    redirect_to "/travel"
+  end
   def gmaps4rails_infowindow
   end
 
