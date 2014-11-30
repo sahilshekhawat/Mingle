@@ -71,6 +71,6 @@ end
   get '/dashboard' => 'users#cycle_dashboard'
   get '/about' => 'pages#about_path'
   get '/join/:id/' => "travels#join"
-  # get '/remove/:travel_id/'
+  get '/remove/:travel_id/:user_id/' => "travels#remove"
 end
 
