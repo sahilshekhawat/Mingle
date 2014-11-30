@@ -4,47 +4,41 @@
 <!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 
+<style type="text/css">
+  #time{
+    font-size: 18px;
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><b><%= @travel.user.name %>: <%= @travel.from %> to <%= @travel.to %> </b></h3>
-  </div>
-  <div class="panel-body">
-
+  }
+</style>
+<div class="transblack2">
+  <div >
+    <div class="col-md-4">
+    <h4>Created by: <%= link_to @travel.user do %><%= @travel.user.name %><%end%></h4>
+    <h4>From: <%= @travel.from %></h4>
+    <h4>To: <%= @travel.to %></h4>
+    <div id="time">When: <%= @travel.datetime.strftime("%A, %d %b %Y %l:%M %p")%></div>
+    <div id="collaborators">
+    <% if @travel.collaborators.count > 0 %>
+      <h3>Also going</h3>
+      <% @travel.collaborators.each do |tt| %>
+      <% t = User.find(tt) %>
+        <h4><%= link_to t do %><%= t.name %><%end%></h4>
+        <br>
+      <% end %>
+      <% end %>
+    </div>
+    <% if @travel.user.id.eql? current_user.id %>
+    <%= link_to 'Edit', edit_travel_path(@travel) %>
+    <% end %>
+</div>
+<div class="col-md-8">
     <div style='width: 100%;'>
       <div id="directions" style='width: 75%px; height: 400px;'></div>
     </div>
-
-    <table class="table">
-      <tr>
-        <td><strong>From</strong></td>
-        <td><strong>From latatitude</strong></td>
-        <td><strong>From longitude</strong></td>
-        <td><strong>To</strong></td>
-        <td><strong>To latitude</strong></td>
-        <td><strong>To longitude</strong></td>
-        <td><strong>When</strong></td>
-        <td><strong>Who</strong></td>
-        <td><strong>How</strong></td>
-      </tr>
-      <tr>
-        <td><%= @travel.from %></td>
-        <td><%= @travel.flatitude %></td>
-        <td><%= @travel.flongitude %></td>
-        <td><%= @travel.to %></td>
-        <td><%= @travel.tlatitude %></td>
-        <td><%= @travel.tlongitude %></td>
-        <td><%= @travel.datetime %> </td>
-        <td><%= link_to @travel.user do %><%= @travel.user.name %><%end%></td>
-        <td><%= @travel.medium %></td>
-      </tr>
-    </table>
-  </div>
 </div>
 
-
-<%= link_to 'Edit', edit_travel_path(@travel) %> |
 <%= link_to 'Back', travels_path %>
+
 
 
 

@@ -11,6 +11,7 @@ Bug:<br>
 All Maps (for each travel) are getting overlapped (i.e. different map generated for different window)
  -->
 
+  <div class = "transblack2" style="margin-top: 0%">
 <h1 style = "font-family: Bubbler One;font-size: 50px;color: #0099CC;">Pool your Travel
 <span class="pull-right"><%= link_to 'New Travel', new_travel_path, :class => "btn btn-lg btn-info"%></span></h1>
 
@@ -22,15 +23,13 @@ tr:hover{
   background-color: rgba(6, 3, 3, 0.14);
 }
 </style>
-<div class = "panel panel-info" style = "margin-top: 2%;">
-  <div class = "panel-heading">Your Travels</div>
     <table class = "table">
       <thead>
         <tr>
           <th>From</th>
           <th>To</th>
           <th>Date & Time</th>
-          <th>User</th>
+          <th>Who?</th>
           <th>Medium</th>
           <th colspan="2"></th>
         </tr>
@@ -41,7 +40,7 @@ tr:hover{
             <td><%= travel.from %></td>
             <td><%= travel.to %></td>
             <td><%=time_ago_in_words travel.datetime %></td>
-            <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
+            <td><%=link_to travel.user do%><%= travel.user.name %><%end%> <% if travel.collaborators.count > 0 %><%= "and " + travel.collaborators.count.to_s + " more" %><% end %></td>
             <td><%= travel.medium %></td>
             <td>
             <% if travel.user.id == current_user.id %>

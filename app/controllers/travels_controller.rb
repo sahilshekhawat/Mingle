@@ -58,7 +58,7 @@ class TravelsController < ApplicationController
     @travel.user_id = current_user.id
     respond_to do |format|
       if @travel.update(travel_params)
-        format.html { redirect_to @travel, notice: 'Travel was successfully updated.' }
+        format.html { redirect_to @travel, notice: 'Travel was successfully edited.' }
         format.json { render :show, status: :ok, location: @travel }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class TravelsController < ApplicationController
     end
     @travel.destroy
     respond_to do |format|
-      format.html { redirect_to travels_url, notice: 'Travel was successfully destroyed.' }
+      format.html { redirect_to travels_url, notice: 'Travel was successfully deleted.' }
       format.json { head :no_content }
     end
   end

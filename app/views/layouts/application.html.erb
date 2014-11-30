@@ -6,21 +6,29 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
-<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/4.jpg) no-repeat;background-size: 100%;"<%end%>>
+<body>
 <style>
+body { 
+  background: url('/assets/2.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+body{
+  font-family: "Roboto";
+  margin-bottom: 5%;
+}
 a{
   text-decoration: none !important;
-  color: #333 !important;
 }
 .navbar-nav > li > a
 {
   color: #33B5E5  !important;
-  font-family: 'Bubbler One', sans-serif;
-  font-size: 20px;
-  font-weight: strong;
+  font-family: 'Roboto';
 }
 .navbar .navbar-brand
 {
@@ -33,10 +41,12 @@ a{
   background-color: rgba(0, 0, 0, 0.7);
 }
 .transblack2{
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   padding: 5%;
   padding-top: 3%;
   color: #fff ;
+}
+.transblack2 a{
 }
 </style>
     <div class="navbar transblack navbar-fixed-top" role="navigation">
