@@ -28,13 +28,6 @@ ActiveRecord::Schema.define(version: 20141118132429) do
     t.datetime "updated_at"
   end
 
-  create_table "riders", force: true do |t|
-    t.string   "source"
-    t.string   "destination"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "travels", force: true do |t|
     t.string   "from"
     t.string   "to"
