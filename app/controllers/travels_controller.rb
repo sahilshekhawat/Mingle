@@ -90,6 +90,22 @@ class TravelsController < ApplicationController
     travel.save!
     redirect_to "/travel"
   end
+
+  def remove
+    travel = Travel.find(params[:travel_id])
+    user = User.find(params[:user_id])
+
+    if travel.collaborators.include? user.id
+      travel.collaborators.delete user.id
+    else
+      format.html { redirect_to travel, notice: "The person was never going -_-" }
+    end
+    
+    travel.save!
+    redirect_to "/travels/#{travel.id}"
+
+  end
+
   def gmaps4rails_infowindow
   end
 
