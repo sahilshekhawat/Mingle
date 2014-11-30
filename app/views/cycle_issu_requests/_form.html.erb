@@ -9,7 +9,8 @@
       </ul>
     </div>
   <% end %>
-
+<div class = "panel panel-default">
+  <div class = "panel-body">
   <div class="field">
     <p><%= f.label :cycleid %></p>
     <%= f.number_field :cycleid %>
@@ -27,6 +28,9 @@
     <%= f.datetime_select :from %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit", :class => "btn btn-success"%>
+    <%= link_to 'Cancel', dashboard_path, :class => "btn btn-primary" %>
   </div>
+</div>
+</div>
 <% end %>

@@ -1,21 +1,18 @@
 <div class="row" >
-<h3 style="margin: 0 auto;text-align:right;">Number of Available Cycles: </h3>
-<h1>Cycle Dashboard</h1>
-
-
-button should automatically fill the form for cycle_issue_request, with required parameters, and assign a random available cycle <br>
+<h1 style = "font-family: Bubbler One;font-size: 50px;color: #33B5E5">Bicycle Dashboard</h1>
+<!-- button should automatically fill the form for cycle_issue_request, with required parameters, and assign a random available cycle <br>
 it should fill the following data automatically:
 <br>1). student ID
 <br>2). random cycle ID (from a pool of available cycles)
 <br>3). From (time) parameter (leave the To parameter)
 <br>
 It should not:
-<br>1). open the form 
+<br>1). open the form
 <br>2). ask for any kind of input
-<br>
-
+<br> -->
 <%= link_to 'Get a Ride', new_cycle_issu_request_path, :class => "btn btn-lg btn-info" %>
-    <div class="col-xs-12">    
+<!-- <div class = "well">
+    <div class="col-xs-12">
     <div class="row" style="margin: 0 auto;text-align:right;">
         <div class="col-xs-12" >
             <h4 style="font-size:2em;">
@@ -31,9 +28,48 @@ It should not:
             <h4 style="font-size:2em;">
                 Phone: <%= @user.phone %>
             </h4 style="font-size:2em;">
-    </div>    
+          </div>
 </div>
-
-
-
-<h2>Past cycle issues</h2>
+</div> -->
+<div class = "panel panel-info" style = "margin-top: 5%;">
+  <div class = "panel-heading">Your Current Rides</div>
+    <div class = "panel-body">
+      <table class = "table">
+        <thead>
+          <tr>
+            <th>Date & Time</th>
+            <th>Duration(in Hours)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01-12-2104</td>
+            <td>3.5</td>
+            <td><button class = "btn btn-xs btn-primary" >Edit Ride</td>
+            <td><button class = "btn btn-xs btn-danger" >Cancel Ride</td>
+            <td>Data Populate karna hai</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</div>
+<div class = "panel panel-success" style = "margin-top: 5%;">
+  <div class = "panel-heading">Your Previous Rides</div>
+  <div class = "panel-body">
+    <table class = "table">
+      <thead>
+        <tr>
+          <th>Date & Time</th>
+          <th>Duration(in Hours)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>01-12-2104</td>
+          <td>3.5</td>
+          <td>Data Populate karna hai</td>
+        </tr>
+      </tbody>
+    </tbody>
+  </div>
+</div>

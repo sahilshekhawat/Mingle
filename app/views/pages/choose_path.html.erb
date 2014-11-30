@@ -4,42 +4,46 @@
   <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
 </head>
 <body>
-<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<div class = "panel panel-default">
-  <div class = "panel-body">
-
-  </body>
-  <div class="col-md-6">
-    <p style = "font-family: Bubbler One;font-size: 20px;">Pool a car with your friends around you.</p>
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <div class="row">
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="assets/heyo.jpg" alt="...">
+        <div class="caption">
+          <h3>Car Pooling</h3>
+          <p>Share your car or join your pals going around the same destination as of yours.</p>
+          <button id ="carpool"type="button" class="btn btn-info" style = "height: 80px;width: 100%;font-size: 25px;">
+            Car Pool
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src="assets/9.jpg" alt="...">
+        <div class="caption">
+          <h3>Bicycle Ride</h3>
+          <p>Take a bicycle and roam around the sprawling IIIT campus.</p>
+          <button id ="cycle user"type="button" class="btn btn-info" style = "height: 80px;width: 100%;font-size: 25px;">
+            Take a Ride
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-4">
+      <div class="thumbnail">
+        <img src = "assets/10.jpg" alt="...">
+        <div class="caption">
+          <h3>Admin Panel</h3>
+          <p>Access only to Administrators managing the issuing of Bicycles.</p>
+          <button id ="cycle admin"type="button" class="btn btn-danger" style = "height: 80px;width: 100%;font-size: 25px;">
+            Admin Access
+          </button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-xs-12 col-sm-12 col-md-6">
-      <button id ="carpool"type="button" class="btn btn-info btn-lg" style = "height: 100px;width: 100%;font-size: 25px;">
-        Car Pool
-      </button>
-  </div>
-
-  <div class="col-md-6">
-    <p style = "margin-top: 15%;font-family: Bubbler One;font-size: 20px;">Share a ride in IIITD for 4 hours.</p>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-6">
-      <button id ="cycle user"type="button" class="btn btn-info btn-lg" style = "height: 100px;width: 100%;font-size: 25px;margin-top: 15%;">
-        Bicycle Ride
-      </button>
-  </div>
-
-  <div class="col-md-6">
-    <p style = "margin-top: 15%;font-family: Bubbler One;font-size: 20px;">Admin Panel for Bicyle Sharing.</p>
-  </div>
-  <div class="col-xs-12 col-sm-12 col-md-6">
-      <button id = "cycle admin"type="button" class="btn btn-danger btn-lg" style = "height: 100px;width: 100%;font-size: 25px;margin-top:15%;">
-        Admin Login
-      </button>
-  </div>
-</div>
-</div>
-<div class="col-md-2"></div>
-</div>
 </body>
 <script>
 document.getElementById("carpool").onclick = function() {
