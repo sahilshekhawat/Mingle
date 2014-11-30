@@ -4,6 +4,11 @@ class CycleIssuRequestsController < ApplicationController
   # GET /cycle_issu_requests
   # GET /cycle_issu_requests.json
   def index
+    if !current_user.admin?
+      flash[:error] = "You ain't an admin."
+      redirect_to '/choose/'
+    end
+
     @cycle_issu_requests = CycleIssuRequest.all
   end
 
