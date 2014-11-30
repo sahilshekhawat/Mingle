@@ -59,10 +59,16 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
 <!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <script type="text/javascript">
+
   var directionsDisplay = new google.maps.DirectionsRenderer();
-  var directionsService = new google.maps.DirectionsService();
 
   function calcRoute(flat, flong, tlat, tlong) {
+  
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+  
+    directionsDisplay.setMap(handler.getMap());
+
     var origin      = new google.maps.LatLng(flat, flong);
     var destination = new google.maps.LatLng(tlat, tlong);
     var request = {
