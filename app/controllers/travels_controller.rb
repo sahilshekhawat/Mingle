@@ -28,6 +28,7 @@ class TravelsController < ApplicationController
   # GET /travels/1/edit
   def edit
     if @travel.user_id != current_user.id
+      flash[:error] = "Error: Travel is not yours"
       redirect_to '/' and return
     end
   end

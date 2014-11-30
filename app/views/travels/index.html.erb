@@ -37,6 +37,7 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
       </thead>
       <tbody>
         <% @travels.each do |travel| %>
+        <%= link_to  travel do%>
           <tr>
             <td><%= travel.from %></td>
             <td><%= travel.flatitude %></td>
@@ -47,10 +48,22 @@ All Maps (for each travel) are getting overlapped (i.e. different map generated 
             <td><%= travel.datetime %></td>
             <td><%=link_to travel.user do%><%= travel.user.name %><%end%></td>
             <td><%= travel.medium %></td>
-            <td><%= link_to 'Show', travel, :class => "btn btn-xs btn-primary" %></td>
-            <td><%= link_to 'Edit', edit_travel_path(travel), :class => "btn btn-xs btn-primary" %></td>
-            <td><%= link_to 'Cancel', travel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" %></td>
+            <td>
+            <% if travel.user.id == current_user.id %>
+              <%= link_to  edit_travel_path(travel), :class => "btn btn-xs btn-primary" do %>
+               <span class="fa fa-edit"></span>
+              <%end%>
+            <%end%>
+            </td>
+            <td>
+            <% if travel.user.id == current_user.id %>
+            <%= link_to travel, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" do %>
+              <span class="fa fa-trash"></span>
+              <%end%>
+            <%end%>
+            </td>
           </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>

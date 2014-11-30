@@ -48,7 +48,7 @@ a{
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to('/', :class => 'navbar-brand') do%><img src = 'assets/logo1.png' height = "40" width = "100"/><%end%>
+          <%= link_to('/', :class => 'navbar-brand') do%><img src = '/assets/logo1.png' height = "40" width = "100"/><%end%>
         </div>
         <div class="collapse navbar-collapse pull-right">
           <ul class="nav navbar-nav">
@@ -83,11 +83,11 @@ a{
    <% if flash[:notice] %>
     <div class="alert alert-success"><%= flash[:notice] %></div>
     <% elsif flash[:error] %>
-    <div class="alert alert-danger"><%= flash[:notice] %></div>
+    <div class="alert alert-danger"><%= flash[:error] %></div>
     <% elsif flash[:warning] %>
-    <div class="alert alert-warning"><%= flash[:notice] %></div>
+    <div class="alert alert-warning"><%= flash[:warning] %></div>
     <% elsif flash[:info] %>
-    <div class="alert alert-info"><%= flash[:notice] %></div>
+    <div class="alert alert-info"><%= flash[:info] %></div>
   <% end %>
 
 <%= yield %>
