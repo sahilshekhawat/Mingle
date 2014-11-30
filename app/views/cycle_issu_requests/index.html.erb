@@ -1,42 +1,34 @@
-<h2 style="color:white"><strong>Admin</strong></h2>
-<h1 style="color:white">List of all Requests</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Cycleid</th>
-      <th>Studentid</th>
-      <th>To</th>
-      <th>From</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @cycle_issu_requests.each do |cycle_issu_request| %>
+<h2 style="color:#33B5E5;font-family: Bubbler One;font-size: 50px;"><strong>Admin Window</strong></h2>
+<div class = "panel panel-info">
+  <div class = "panel-heading">Admin Panel</div>
+  <table class = "table">
+    <thead>
       <tr>
-        <td><%= cycle_issu_request.cycleid %></td>
-        <td><%= cycle_issu_request.studentid %></td>
-        <td><%= cycle_issu_request.to %></td>
-        <td><%= cycle_issu_request.from %></td>
-        <td><%= link_to 'View', cycle_issu_request, :class => "btn btn-xs btn-primary" %></td>
-        <td><%= link_to 'Edit', edit_cycle_issu_request_path(cycle_issu_request), :class => "btn btn-xs btn-primary" %></td>
-        <td style = "color: white;"><%= link_to 'Delete', cycle_issu_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-warning" %></td>
-        <td><button class = "btn btn-xs btn-success" >Issue</td>
-        <td><button class = "btn btn-xs btn-warning" >Re-Issue</td>
-        <td><button class = "btn btn-xs btn-danger" >Report</td>
+        <th>Cycleid</th>
+        <th>Studentid</th>
+        <th>To</th>
+        <th>From</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
+    </thead>
+    <tbody>
+      <% @cycle_issu_requests.each do |cycle_issu_request| %>
+        <tr>
+          <td><%= cycle_issu_request.cycleid %></td>
+          <td><%= cycle_issu_request.studentid %></td>
+          <td><%= cycle_issu_request.to %></td>
+          <td><%= cycle_issu_request.from %></td>
+          <td><%= link_to 'View', cycle_issu_request, :class => "btn btn-xs btn-primary" %></td>
+          <td><%= link_to 'Edit', edit_cycle_issu_request_path(cycle_issu_request), :class => "btn btn-xs btn-primary" %></td>
+          <td style = "color: white;"><%= link_to 'Delete', cycle_issu_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-warning" %></td>
+          <td><button class = "btn btn-xs btn-success" >Issue</td>
+          <td><button class = "btn btn-xs btn-warning" >Re-Issue</td>
+          <td><button class = "btn btn-xs btn-danger" >Report</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br>
-
 <%= link_to 'Issue cycle', new_cycle_issu_request_path, :class => "btn btn-primary"%>
 <%= link_to 'Add Cycle', new_cycle_path, :class => "btn btn-primary"%>
-
 <br>
-<h3>Listing available cycles</h3>
-<% @cycle_issu_requests.cycle.each do |cycle| %>
-<h4 style="color:white;"><%=cycle.cycle_id%></h4>
-<%end%>
