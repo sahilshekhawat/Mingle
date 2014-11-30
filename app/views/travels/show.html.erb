@@ -3,61 +3,48 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <!-- gmaps4rails////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
-<div style='width: 1000px;'>
-  <div id="directions" style='width: 800px; height: 400px;'></div>
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title"><b><%= @travel.user.name %>: <%= @travel.from %> to <%= @travel.to %> </b></h3>
+  </div>
+  <div class="panel-body">
+
+    <div style='width: 100%;'>
+      <div id="directions" style='width: 75%px; height: 400px;'></div>
+    </div>
+
+    <table class="table">
+      <tr>
+        <td><strong>From</strong></td>
+        <td><strong>From latatitude</strong></td>
+        <td><strong>From longitude</strong></td>
+        <td><strong>To</strong></td>
+        <td><strong>To latitude</strong></td>
+        <td><strong>To longitude</strong></td>
+        <td><strong>When</strong></td>
+        <td><strong>Who</strong></td>
+        <td><strong>How</strong></td>
+      </tr>
+      <tr>
+        <td><%= @travel.from %></td>
+        <td><%= @travel.flatitude %></td>
+        <td><%= @travel.flongitude %></td>
+        <td><%= @travel.to %></td>
+        <td><%= @travel.tlatitude %></td>
+        <td><%= @travel.tlongitude %></td>
+        <td><%= @travel.datetime %> </td>
+        <td><%= link_to @travel.user do %><%= @travel.user.name %><%end%></td>
+        <td><%= @travel.medium %></td>
+      </tr>
+    </table>
+  </div>
 </div>
 
-
-
-
-<p>
-<strong>From:</strong>
-  <%= @travel.from %>
-</p>
-
-<p>
-<strong>From Lat:</strong>
-  <%= @travel.flatitude %>
-</p>
-<p>
-<strong>From Lan:</strong>
-  <%= @travel.flongitude %>
-</p>
-
-
-<p>
-  <strong>To Lat:</strong>
-  <%= @travel.to %>
-</p>
-
-<p>
-  <strong>To Lat:</strong>
-  <%= @travel.tlatitude %>
-</p>
-
-<p>
-  <strong>To Lat:</strong>
-  <%= @travel.tlongitude %>
-</p>
-
-<p>
-  <strong>Datetime:</strong>
-  <%= @travel.datetime %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%=link_to @travel.user do%><%= @travel.user.name %><%end%>
-</p>
-
-<p>
-  <strong>Medium:</strong>
-  <%= @travel.medium %>
-</p>
 
 <%= link_to 'Edit', edit_travel_path(@travel) %> |
 <%= link_to 'Back', travels_path %>
-</div>
 
 
 
