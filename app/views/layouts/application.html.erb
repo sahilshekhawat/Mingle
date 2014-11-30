@@ -6,17 +6,21 @@
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <link href="http://netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
   <script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
-<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/3.jpg) no-repeat;background-size: 100%;"<%end%>> 
+<body <%if user_signed_in? %>style="background: url(http://localhost:3000/assets/4.jpg) no-repeat;background-size: 100%;"<%end%>>
 <style>
-a:hover{
+a{
   text-decoration: none !important;
   color: #fff !important;
 }
 .navbar-nav > li > a
 {
-  color: #eee !important;
+  color: #33B5E5  !important;
+  font-family: 'Bubbler One', sans-serif;
+  font-size: 20px;
+  font-weight: strong;
 }
 .navbar .navbar-brand
 {
@@ -56,15 +60,15 @@ a:hover{
                 <li><%= link_to current_user do %>Profile<%end%>
                 <li><%= link_to edit_user_registration_path do %>Manage Account<%end%>
               <%end%>
-              
+
               <% if params[:controller] == "users" %>
                 <li><%= link_to edit_user_registration_path do %>Manage Account<%end%>
               <%end%>
-              
+
               <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>
-            <% else %>            
-               <li><%= link_to( new_user_session_path) do %>Login<%end%>
-               <li><%= link_to( new_user_registration_path) do %>Register<%end%>
+            <% else %>
+               <li><%= link_to('/about') do %>About<%end%>
+               <li><%= link_to( new_user_registration_path) do %>Sign Up<%end%>
             <% end %>
 
           </ul>
@@ -74,7 +78,6 @@ a:hover{
 <br><br><br>
 <!-- navbar till here, body now begins -->
 <div class="container-fluid">
-
    <% if flash[:notice] %>
     <div class="alert alert-success"><%= flash[:notice] %></div>
     <% elsif flash[:error] %>

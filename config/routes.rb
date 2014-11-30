@@ -66,4 +66,5 @@ Rails.application.routes.draw do
   get '/travel' => 'travels#index'
   get '/choose' => 'pages#choose_path'
   get '/dashboard' => 'users#cycle_dashboard'
+  get '/about' => 'pages#about_path'
 end
