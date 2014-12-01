@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20141201014858) do
     t.integer  "cycle_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "available",  default: true
   end
 
   create_table "travels", force: true do |t|

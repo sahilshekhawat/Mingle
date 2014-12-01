@@ -10,35 +10,19 @@
       </ul>
     </div>
   <% end %>
-
   <div class="field">
     <%= f.label :from %><br>
     <p style = "color: black"><%= f.text_field :from %></p>
   </div>
-  <!-- <div class="field">
-    <%= f.label :flatitude %><br>
-    <%= f.text_field :flatitude %>
-  </div>
-  <div class="field">
-    <%= f.label :flongitude %><br>
-    <%= f.text_field :flongitude %>
-  </div>
-   -->
+
   <div class="field">
     <%= f.label :to %><br>
     <p style = "color: black"><%= f.text_field :to %></p>
   </div>
-  <!-- <div class="field">
-    <%= f.label :tlatitude %><br>
-    <%= f.text_field :tlatitude %>
-  </div>
-  <div class="field">
-    <%= f.label :tlongitude %><br>
-    <%= f.text_field :tlongitude %>
-  </div> -->
   
   <div  class="input-append">
     <div class="input-group datepicker">
+      <label for="travel_datetime">When</label><br>
       <% if @travel.datetime %>
     <%= f.text_field :datetime, :class => "form-control", "data-date-format" => "DD/MM/YYYY HH:mm",:value=>@travel.datetime.strftime('%d/%M/%Y %l:%M')  %>
     <% else %>

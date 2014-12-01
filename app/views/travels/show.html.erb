@@ -22,7 +22,14 @@
       <h3>Also going</h3>
       <% @travel.collaborators.each do |tt| %>
       <% t = User.find(tt) %>
-        <h4><%= link_to t do %><%= t.name %><%end%><%= link_to "/remove/#{@travel.id}/#{t.id}/" do%><span class="pull-right"><span style="color:red" class="fa fa-minus"></span></span> <% end %></h4>
+        <h4><%= link_to t do %><%= t.name %><%end%>
+
+        <% if @travel.user == current_user %>
+        <%= link_to "/remove/#{@travel.id}/#{t.id}/" do%><span class="pull-right"><span style="color:red" class="fa fa-minus"></span></span> <% end %>
+        <% end %>
+
+        
+        </h4>
         <br>
       <% end %>
       <% end %>

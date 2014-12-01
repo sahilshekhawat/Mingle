@@ -74,12 +74,10 @@ a{
 
               <% if params[:controller] == "travels" %>
                 <li><%= link_to current_user do %>Profile<%end%>
-                <li><%= link_to edit_user_registration_path do %>Manage Account<%end%>
               <%end%>
 
               <% if params[:controller] == "users"  %>
                 <li><%= link_to current_user do %>Profile<%end%>
-                <li><%= link_to edit_user_registration_path do %>Manage Account<%end%>
               <%end%>
 
               <li><%= link_to( destroy_user_session_path, :method => :delete) do %>Log Out<%end%>
