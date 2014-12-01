@@ -77,7 +77,7 @@ It should not:
         <tr>
            <td><%=time_ago_in_words(ride.from)+ " ago"%></td>
             <td><%=" 5 Hours" %></td>
-             <td><%=ride.approved%></td>
+            <td><%= if ride.approved then "Yes" else "No" end%></td>
         </tr>
         <%end%>
       </tbody>
