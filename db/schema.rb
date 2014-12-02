@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20141201014858) do
     t.boolean  "available",  default: true
   end
 
+  create_table "riders", force: true do |t|
+    t.string   "source"
+    t.string   "destination"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "travels", force: true do |t|
     t.string   "from"
     t.string   "to"
