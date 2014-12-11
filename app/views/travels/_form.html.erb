@@ -36,10 +36,19 @@
     <%= f.label :tlongitude %><br>
     <%= f.text_field :tlongitude %>
   </div> -->
-  <div class="field">
-    <%= f.label :datetime %><br>
-    <%= f.datetime_select :datetime %>
-  </div>
+  
+  <div  class="input-append">
+    <div class="input-group datepicker">
+      <% if @travel.datetime %>
+    <%= f.text_field :datetime, :class => "form-control", "data-date-format" => "DD/MM/YYYY HH:mm",:value=>@travel.datetime.strftime('%d/%M/%Y %l:%M')  %>
+    <% else %>
+    <%= f.text_field :datetime, :class => "form-control", "data-date-format" => "DD/MM/YYYY HH:mm" %>
+    <%end %>
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+    </div>
+    </div>
     <%= f.hidden_field :user_id , value: current_user.id%>
   <div class="field">
     <%= f.label :medium %><br>
@@ -51,3 +60,6 @@
   </div>
 </div>
 <% end %>
+<script type="text/javascript">
+$('.datepicker').datetimepicker();
+</script>
