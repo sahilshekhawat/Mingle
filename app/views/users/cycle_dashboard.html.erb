@@ -1,4 +1,8 @@
-<div class="row" >
+<style type="text/css">
+.table{
+  color: black;
+}</style>
+<div class="transblack2" >
 <h1 style = "font-family: Bubbler One;font-size: 50px;color: #33B5E5">Bicycle Dashboard</h1>
 <!-- button should automatically fill the form for cycle_issue_request, with required parameters, and assign a random available cycle <br>
 it should fill the following data automatically:
@@ -10,7 +14,8 @@ It should not:
 <br>1). open the form
 <br>2). ask for any kind of input
 <br> -->
-<%= link_to 'Get a Ride', new_cycle_issu_request_path, :class => "btn btn-lg btn-info" %>
+<%= link_to 'Get a Ride', cycle_issu_requests_path, :method => :post, :class => "btn btn-lg btn-info" %>
+<%= "Available Cycles: " + (total_cycles - count_used_rides).to_s %>
 <!-- <div class = "well">
     <div class="col-xs-12">
     <div class="row" style="margin: 0 auto;text-align:right;">
@@ -31,6 +36,7 @@ It should not:
           </div>
 </div>
 </div> -->
+<% if not get_current_cycle_request.nil? %>
 <div class = "panel panel-info" style = "margin-top: 5%;">
   <div class = "panel-heading">Your Current Rides</div>
     <div class = "panel-body">
@@ -39,36 +45,41 @@ It should not:
           <tr>
             <th>Date & Time</th>
             <th>Duration(in Hours)</th>
+            <th>Approved?</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>01-12-2104</td>
-            <td>3.5</td>
-            <td><button class = "btn btn-xs btn-primary" >Edit Ride</td>
-            <td><button class = "btn btn-xs btn-danger" >Cancel Ride</td>
-            <td>Data Populate karna hai</td>
+            <td><%=time_ago_in_words(get_current_cycle_request.from) + " ago"%></td>
+            <td><%=" 5 Hours" %></td>
+             <td><%= if get_current_cycle_request.approved then "Yes" else "No" end%></td>
+            <td><%= link_to 'Delete', get_current_cycle_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-danger" %></td>
           </tr>
         </tbody>
       </table>
     </div>
 </div>
+<%end%>
 <div class = "panel panel-success" style = "margin-top: 5%;">
   <div class = "panel-heading">Your Previous Rides</div>
   <div class = "panel-body">
     <table class = "table">
       <thead>
         <tr>
-          <th>Date & Time</th>
-          <th>Duration(in Hours)</th>
+          <<th>Date & Time</th>
+            <th>Duration(in Hours)</th>
+            <th>Approved?</th>
         </tr>
       </thead>
       <tbody>
+        <% get_previous_rides.each do |ride| %>
         <tr>
-          <td>01-12-2104</td>
-          <td>3.5</td>
-          <td>Data Populate karna hai</td>
+           <td><%=time_ago_in_words(ride.from)+ " ago"%></td>
+            <td><%=" 5 Hours" %></td>
+             <td><%=ride.approved%></td>
         </tr>
+        <%end%>
       </tbody>
     </tbody>
   </div>

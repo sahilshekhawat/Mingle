@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang = "en">
-<head>
-  <link href='http://fonts.googleapis.com/css?family=Bubbler+One' rel='stylesheet' type='text/css'>
-</head>
-<body>
-  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <div class="row">
+
     <div class='col-sm-6 col-md-4 <% if !current_user.admin? %> col-md-offset-2 <% end %>'>
       <div class="thumbnail">
         <img src="/assets/heyo.jpg" alt="...">
@@ -25,7 +17,7 @@
         <div class="caption">
           <h3>Bicycle Ride</h3>
           <p>Take a bicycle and roam around the sprawling IIIT Delhi campus.</p>
-          <button id ="cycle user"type="button" class="btn btn-info" style = "height: 80px;width: 100%;font-size: 25px;">
+          <button id ="cycleuser"type="button" class="btn btn-info" style = "height: 80px;width: 100%;font-size: 25px;">
             Take a Ride
           </button>
         </div>
@@ -38,7 +30,7 @@
         <div class="caption">
           <h3>Admin Panel</h3>
           <p>Access only to Administrators managing the issuing of Bicycles.</p>
-          <button id ="cycle admin"type="button" class="btn btn-danger" style = "height: 80px;width: 100%;font-size: 25px;">
+          <button id ="cycleadmin"type="button" class="btn btn-danger" style = "height: 80px;width: 100%;font-size: 25px;">
             Admin Access
           </button>
         </div>
@@ -46,16 +38,17 @@
     </div>
     <% end %>
   </div>
-</body>
+
 <script>
 document.getElementById("carpool").onclick = function() {
   location.href = "/travel";
 }
-document.getElementById("cycle admin").onclick = function() {
+ <% if current_user.admin? %>
+document.getElementById("cycleadmin").onclick = function() {
   location.href = "/cycle";
 }
-document.getElementById("cycle user").onclick = function() {
+<% end %>
+document.getElementById("cycleuser").onclick = function() {
   location.href = "/dashboard"
 }
 </script>
-</html>

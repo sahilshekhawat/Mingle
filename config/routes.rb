@@ -72,5 +72,7 @@ end
   get '/about' => 'pages#about_path'
   get '/join/:id/' => "travels#join"
   get '/remove/:travel_id/:user_id/' => "travels#remove"
+  get '/accept/:id' => "cycle_issu_requests#accept"
+  get '/reject/:id' => "cycle_issu_requests#reject"
 end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130222341) do
+ActiveRecord::Schema.define(version: 20141201014858) do
 
   create_table "cycle_issu_requests", force: true do |t|
     t.integer  "cycleid"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20141130222341) do
     t.datetime "from"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "approved"
   end
 
   create_table "cycles", force: true do |t|

@@ -12,13 +12,7 @@
 <div class = "panel panel-default">
   <div class = "panel-body">
   <div class="field">
-    <p><%= f.label :cycleid %></p>
-    <%= f.number_field :cycleid %>
-  </div>
-  <div class="field">
-    <p><%= f.label :studentid %></p>
-    <%= f.number_field :studentid %>
-  </div>
+    <%= f.hidden_field :studentid, :value => current_user.id %>
   <div class="field">
     <p><%= f.label :to %><br></p>
     <%= f.datetime_select :to %>

@@ -1,34 +1,37 @@
-<h2 style="color:#33B5E5;font-family: Bubbler One;font-size: 50px;"><strong>Admin Window</strong></h2>
-<div class = "panel panel-info">
+<div class = "transblack2">
   <div class = "panel-heading">Admin Panel</div>
+  <%= "Available Cycles: " + (total_cycles - count_used_rides).to_s %>
   <table class = "table">
     <thead>
       <tr>
-        <th>Cycleid</th>
-        <th>Studentid</th>
-        <th>To</th>
+        <th>Student</th>
         <th>From</th>
+        <th>Duration</th>
+        <th>Approved?</th>
+        <th colspan="2"></th>
       </tr>
     </thead>
     <tbody>
-      <% @cycle_issu_requests.each do |cycle_issu_request| %>
+      <% @cycle_issu_requests.reverse.each do |cycle_issu_request| %>
         <tr>
-          <td><%= cycle_issu_request.cycleid %></td>
-          <td><%= cycle_issu_request.studentid %></td>
-          <td><%= cycle_issu_request.to %></td>
-          <td><%= cycle_issu_request.from %></td>
-          <td><%= link_to 'View', cycle_issu_request, :class => "btn btn-xs btn-primary" %></td>
-          <td><%= link_to 'Edit', edit_cycle_issu_request_path(cycle_issu_request), :class => "btn btn-xs btn-primary" %></td>
+          <% user = User.find(cycle_issu_request.studentid) %>
+          <td><%= link_to user do%><%= user.name %><%end%></td>
+          <td><%= time_ago_in_words(cycle_issu_request.from) + " ago"%></td>
+          <td>5 hours</td>
+          <td><%= if cycle_issu_request.approved then "Yes" else "No" end%></td>
+          <% unless cycle_issu_request.approved %>
+          <td><%= link_to 'Accept', '/accept/'+cycle_issu_request.id.to_s, :class => "btn btn-xs btn-success" %></td>
+          <% else %>
+          <td><%= link_to 'Reject', '/reject/'+cycle_issu_request.id.to_s, :class => "btn btn-xs btn-danger" %></td>
+          <% end %>
           <td style = "color: white;"><%= link_to 'Delete', cycle_issu_request, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-xs btn-warning" %></td>
-          <td><button class = "btn btn-xs btn-success" >Issue</td>
-          <td><button class = "btn btn-xs btn-warning" >Re-Issue</td>
-          <td><button class = "btn btn-xs btn-danger" >Report</td>
         </tr>
       <% end %>
     </tbody>
   </table>
+<br>
+<%# link_to 'Issue cycle', new_cycle_issu_request_path, :class => "btn btn-primary"%>
+<%# link_to 'Add Cycle', new_cycle_path, :class => "btn btn-primary"%>
+<br>
 </div>
-<br>
-<%= link_to 'Issue cycle', new_cycle_issu_request_path, :class => "btn btn-primary"%>
-<%= link_to 'Add Cycle', new_cycle_path, :class => "btn btn-primary"%>
-<br>
+ 
